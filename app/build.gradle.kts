@@ -1,6 +1,9 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -50,20 +53,78 @@ android {
 }
 
 dependencies {
+    // all modules
+    implementation(project(":core"))
+    implementation(project(":onboarding:presentation"))
+    implementation(project(":tracker:data"))
+    implementation(project(":tracker:domain"))
+    implementation(project(":tracker:presentation"))
 
+    // androidx
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.process)
+
+    // compose
+    implementation(libs.compose.ui)
+    implementation(libs.activity.compose)
+    implementation(libs.compose.ui.foundation)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.ui.tooling)
+    implementation(libs.compose.runtime)
+    implementation(libs.compose.navigation)
+    implementation(platform(libs.compose.bom))
+
+    // hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation)
+
+    // splash screen
+    implementation(libs.splash.screen)
+
+    // coroutines
+    implementation(libs.coroutines)
+
+    // coil compose
+    implementation(libs.coil.compose)
+
+    // google material
+    implementation(libs.google.material)
+
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.moshi.converter)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
+    // room
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+    implementation(libs.room.runtime)
+
+    // test
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.junit.test.ext)
+    testImplementation(libs.truth)
+    testImplementation(libs.coroutines)
+    testImplementation(libs.turbine)
+    testImplementation(libs.compose.ui.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mock.web.server)
+
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.junit.test.ext)
+    androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.coroutines)
+    androidTestImplementation(libs.turbine)
+    androidTestImplementation(libs.compose.ui.test)
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.mock.web.server)
+    androidTestImplementation(libs.hilt.testing)
+    kspAndroidTest(libs.hilt.compiler)
+    androidTestImplementation(libs.test.runner)
 }
