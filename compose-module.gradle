@@ -1,34 +1,28 @@
-plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlin.ksp)
-    alias(libs.plugins.hilt)
-}
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'kotlin-parcelize'
 
 android {
-    namespace = "com.tashuseyin.calorietracker"
-    compileSdk = 34
-
+    compileSdk 34
     defaultConfig {
-        applicationId = "com.tashuseyin.calorietracker"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
         vectorDrawables {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
         release {
-            isMinifyEnabled = false
+            minifyEnabled false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
     }
@@ -37,35 +31,17 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = '18'
     }
     buildFeatures {
-        compose = true
+        compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+        kotlinCompilerExtensionVersion "1.5.3"
     }
 }
 
 dependencies {
-    // all modules
-    implementation(project(":core"))
-    implementation(project(":onboarding:presentation"))
-    implementation(project(":tracker:data"))
-    implementation(project(":tracker:domain"))
-    implementation(project(":tracker:presentation"))
-
-    // androidx
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.process)
-
     // compose
     implementation(libs.compose.ui)
     implementation(libs.activity.compose)
@@ -78,33 +54,13 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(platform(libs.compose.bom))
 
+    // coil
+    implementation(libs.coil.compose)
+
     // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation)
-
-    // splash screen
-    implementation(libs.splash.screen)
-
-    // coroutines
-    implementation(libs.coroutines)
-
-    // coil compose
-    implementation(libs.coil.compose)
-
-    // google material
-    implementation(libs.google.material)
-
-    // retrofit
-    implementation(libs.retrofit)
-    implementation(libs.moshi.converter)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging.interceptor)
-
-    // room
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
-    implementation(libs.room.runtime)
 
     // test
     testImplementation(libs.junit)

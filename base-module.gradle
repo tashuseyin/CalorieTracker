@@ -1,0 +1,62 @@
+apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'kotlin-parcelize'
+
+
+android {
+    compileSdk 34
+    defaultConfig {
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '18'
+    }
+}
+
+dependencies {
+    // hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+
+    // test
+    testImplementation(libs.junit)
+    testImplementation(libs.junit.test.ext)
+    testImplementation(libs.truth)
+    testImplementation(libs.coroutines)
+    testImplementation(libs.turbine)
+    testImplementation(libs.compose.ui.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.mock.web.server)
+
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.junit.test.ext)
+    androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.coroutines)
+    androidTestImplementation(libs.turbine)
+    androidTestImplementation(libs.compose.ui.test)
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.mock.web.server)
+    androidTestImplementation(libs.hilt.testing)
+    kspAndroidTest(libs.hilt.compiler)
+    androidTestImplementation(libs.test.runner)
+}
