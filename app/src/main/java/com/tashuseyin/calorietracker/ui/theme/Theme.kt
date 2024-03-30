@@ -6,6 +6,13 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.tashuseyin.core_ui.BrightGreen
+import com.tashuseyin.core_ui.DarkGray
+import com.tashuseyin.core_ui.DarkGreen
+import com.tashuseyin.core_ui.LightGray
+import com.tashuseyin.core_ui.MediumGray
+import com.tashuseyin.core_ui.Orange
+import com.tashuseyin.core_ui.TextWhite
 
 
 private val DarkColorScheme = darkColorScheme(
@@ -36,7 +43,7 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun CalorieTrackerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 

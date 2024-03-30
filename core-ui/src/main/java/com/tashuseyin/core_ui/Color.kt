@@ -1,4 +1,4 @@
-package com.tashuseyin.calorietracker.ui.theme
+package com.tashuseyin.core_ui
 
 import androidx.compose.ui.graphics.Color
 

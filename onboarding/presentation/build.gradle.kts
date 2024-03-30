@@ -11,5 +11,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":core-ui"))
     implementation(project(":onboarding:domain"))
 }

@@ -55,6 +55,7 @@ android {
 dependencies {
     // all modules
     implementation(project(":core"))
+    implementation(project(":core-ui"))
     implementation(project(":onboarding:presentation"))
     implementation(project(":tracker:data"))
     implementation(project(":tracker:domain"))
