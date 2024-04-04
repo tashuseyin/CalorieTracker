@@ -13,10 +13,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.tashuseyin.core.R
+import com.tashuseyin.core.navigation.Route
+import com.tashuseyin.core.util.UIEvent
 import com.tashuseyin.core_ui.Spacer16
 import com.tashuseyin.presentation.welcome.components.ActionButton
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    onNavigate: (UIEvent.Navigate) -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize()
             .padding(8.dp),
@@ -32,7 +36,7 @@ fun WelcomeScreen() {
         ActionButton(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             text = stringResource(id = R.string.next),
-            onClick = { /*TODO*/ }
+            onClick = { onNavigate.invoke(UIEvent.Navigate(Route.AGE_SCREEN)) }
         )
     }
 }
