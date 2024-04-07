@@ -29,7 +29,7 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = BrightGreen,
-    onTertiaryContainer = DarkGreen,
+    primaryContainer = DarkGreen,
     secondary = Orange,
     background = Color.White,
     onBackground = DarkGray,

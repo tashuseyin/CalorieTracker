@@ -16,7 +16,8 @@ import com.tashuseyin.core.R
 import com.tashuseyin.core.navigation.Route
 import com.tashuseyin.core.util.UIEvent
 import com.tashuseyin.core_ui.Spacer16
-import com.tashuseyin.presentation.welcome.components.ActionButton
+import com.tashuseyin.presentation.components.ActionButton
+
 @Composable
 fun WelcomeScreen(
     onNavigate: (UIEvent.Navigate) -> Unit
@@ -36,7 +37,7 @@ fun WelcomeScreen(
         ActionButton(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             text = stringResource(id = R.string.next),
-            onClick = { onNavigate.invoke(UIEvent.Navigate(Route.AGE_SCREEN)) }
+            onClick = { onNavigate.invoke(UIEvent.Navigate(Route.GENDER_SCREEN)) }
         )
     }
 }
