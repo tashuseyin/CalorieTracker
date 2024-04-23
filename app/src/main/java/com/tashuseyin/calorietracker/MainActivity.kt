@@ -21,6 +21,7 @@ import com.tashuseyin.presentation.age.AgeScreen
 import com.tashuseyin.presentation.gender.GenderScreen
 import com.tashuseyin.presentation.goal.GoalScreen
 import com.tashuseyin.presentation.height.HeightScreen
+import com.tashuseyin.presentation.nutrient_goal.NutrientGoalScreen
 import com.tashuseyin.presentation.weight.WeightScreen
 import com.tashuseyin.presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -72,7 +73,12 @@ class MainActivity : ComponentActivity() {
                         composable(route = Route.GOAL_SCREEN) {
                             GoalScreen(onNavigate = navController::navigate)
                         }
-                        composable(route = Route.NUTRIENT_GOAL_SCREEN) {}
+                        composable(route = Route.NUTRIENT_GOAL_SCREEN) {
+                            NutrientGoalScreen(
+                                snackbarHostState = snackbarHostState,
+                                onNavigate = navController::navigate
+                            )
+                        }
                         composable(route = Route.TRACKER_OVERVIEW_SCREEN) {}
                         composable(route = Route.SEARCH_SCREEN) {}
                     }

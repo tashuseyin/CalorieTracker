@@ -39,7 +39,7 @@ class PreferencesImpl @Inject constructor(
         sharedPref.edit().putFloat(Preferences.KEY_CARB_RATIO, ratio).apply()
     }
 
-    override fun saveProteinRation(ratio: Float) {
+    override fun saveProteinRatio(ratio: Float) {
         sharedPref.edit().putFloat(Preferences.KEY_PROTEIN_RATIO, ratio).apply()
     }
 
